@@ -1,0 +1,15 @@
+
+<div>
+    <h2>Marks</h2>
+    {% for test in tests %}
+    <li>
+        <span><a href="{{url_for('main.user', username = test.student.username)}}">{{test.student.username}}</a> secured </span>
+        <span>
+            {{test.marks}} marks
+        </span>
+        {% if test.date %}
+        <span>taken on {{moment(test.date).format('DD-MM-YYYY [at] hh:mm a')}}</span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</div>

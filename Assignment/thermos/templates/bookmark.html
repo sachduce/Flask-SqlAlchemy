@@ -1,0 +1,31 @@
+<div>
+    <a href="{{bookmark.url}}">
+        <h3>{{bookmark.description | truncate(50, killwords = True)}}</h3>
+    </a>
+    <span>
+                {{bookmark.url | truncate(50, killwords = True)}}
+        </span>
+    <div>
+            <span>
+                {% if bookmark.tags %}
+                    {% for t in bookmark._tags %}
+                        <a href="{{ url_for('bookmarks.tag', name=t) }}">{{t}}</a>
+                    {% endfor %}
+                {% else %} No tags.
+                {% endif %}
+            </span>
+
+    </div>
+    <div>
+        <br>
+        Added by <a href="{{url_for('bookmarks.user',username= bookmark.user.username)}}">{{bookmark.user.username}}</a>
+        <span>{{ moment(bookmark.date).fromNow()}}</span>
+
+        {% if current_user == bookmark.user and not nolinks %}
+            <span class="editlinks">
+                <a href="{{ url_for('bookmarks.edit_bookmark', bookmark_id=bookmark.id) }}">edit</a>
+                <a href="{{ url_for('bookmarks.delete_bookmark', bookmark_id=bookmark.id) }}">delete</a>
+            </span>
+        {% endif %}
+    </div>
+</div>

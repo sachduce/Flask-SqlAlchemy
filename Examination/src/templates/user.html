@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+User
+{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>{{user.username}}</h1>
+    </header>
+    <section>
+        {% if user.category == 'teacher' %}
+            <h4>You have created the following questions: </h4>
+            {% with questions = user.questions %}
+            {% include "questions_list.html" %}
+            {% endwith %}
+        {% else %}
+            {% with tests = user.tests %}
+            {% include "tests_list.html" %}
+            {% endwith %}
+        {% endif %}
+    </section>
+</article>
+{% endblock %}

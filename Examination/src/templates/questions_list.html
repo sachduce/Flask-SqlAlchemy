@@ -1,0 +1,20 @@
+<div>
+    {% for question in questions %}
+    <div>
+            <span>
+                {{question.question}}
+            </span>
+
+        {% if current_user == question.teacher and not nolinks %}
+        <span class="editlinks">
+                <a href="{{ url_for('questions.edit', question_id=question.id) }}">edit</a>
+                <a href="{{ url_for('questions.delete', question_id=question.id) }}">delete</a>
+            </span>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+
+

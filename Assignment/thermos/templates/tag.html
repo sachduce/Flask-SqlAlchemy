@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tag Bookmarks - {{ tag }}
+{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>Bookmarks Tagged {{tag}}</h1>
+    </header>
+    <section>
+        {% if tag.bookmarks.count() > 0 %}
+        {% with bookmarks = tag.bookmarks %}
+        {% include 'bookmarks_list.html' %}
+        {% endwith %}
+        {% else %}
+        There are no bookmarks with this tag.
+        {% endif %}
+    </section>
+</article>
+{% endblock %}

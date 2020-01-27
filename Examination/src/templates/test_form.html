@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+
+{% block title %}
+{{ title }}
+{%  endblock %}
+
+{% block content %}
+<header>
+    <h2>Multiple Choice Quiz </h2>
+</header>
+
+
+    <div class="row">
+        <form action="" method="POST">
+
+            {% for question in questions %}
+            <section data-quiz-item>
+
+                <div class="question">
+                    <h4>{{question.question}}</h4>
+                </div>
+
+                <div >
+                    <input type="radio" name="{{question.id}}" value="option1"/>
+                    <h5 style="margin: 0; display: contents">{{question.option1}}</h5>
+                </div>
+                <div>
+                    <input type="radio" name="{{question.id}}" value="option2"/>
+                    <h5 style="margin: 0; display: contents">{{question.option2}}</h5>
+                </div>
+                <div >
+                    <input type="radio" name="{{question.id}}" value="option3"/>
+                    <h5 style="margin: 0; display: contents">{{question.option3}}</h5>
+                </div>
+                <div >
+                    <input type="radio" name="{{question.id}}" value="option4"/>
+                    <h5 style="margin: 0; display: contents">{{question.option4}}</h5>
+                </div>
+
+
+            </section>
+            {% endfor %}
+
+            <div class="form-group">
+                <button type="submit">Done</button>
+            </div>
+
+
+        </form>
+    </div>
+
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
